@@ -1,0 +1,326 @@
+/* -------------------------------------------------
+   FONT + RESET
+------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s ease, color 0.3s ease;
+    line-height: 1.6;
+}
+
+/* -------------------------------------------------
+   LIGHT / DARK COLOR VARIABLES
+------------------------------------------------- */
+
+:root {
+    --bg: #ffffff;
+    --text: #111827;
+    --primary: #1d4ed8;
+    --primary-light: #3b82f6;
+    --accent: #10b981;
+    --card-bg: #f3f4f6;
+    --header-bg: rgba(255,255,255,0.7);
+    --shadow: rgba(0,0,0,0.07);
+}
+
+.dark {
+    --bg: #0f172a;
+    --text: #e2e8f0;
+    --primary: #60a5fa;
+    --primary-light: #93c5fd;
+    --accent: #34d399;
+    --card-bg: #1e293b;
+    --header-bg: rgba(15,23,42,0.7);
+    --shadow: rgba(0,0,0,0.4);
+}
+
+/* -------------------------------------------------
+   HEADER + NAV + THEME TOGGLE
+------------------------------------------------- */
+
+header {
+    position: sticky;
+    top: 0;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background: var(--header-bg);
+    box-shadow: 0 2px 10px var(--shadow);
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.theme-toggle {
+    border: none;
+    background: var(--card-bg);
+    padding: 0.5rem 0.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 3px 6px var(--shadow);
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* -------------------------------------------------
+   MOBILE MENU TOGGLE (HAMBURGER)
+------------------------------------------------- */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 26px;
+    height: 3px;
+    background: var(--text);
+    border-radius: 3px;
+    transition: 0.3s ease;
+}
+
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* -------------------------------------------------
+   MOBILE NAVIGATION PANEL
+------------------------------------------------- */
+
+#nav.mobile {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    background: var(--bg);
+    text-align: center;
+    padding: 1.5rem 0;
+    box-shadow: 0 8px 20px var(--shadow);
+    border-bottom: 1px solid var(--card-bg);
+
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease;
+}
+
+#nav.mobile.open {
+    transform: translateY(0%);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#nav.mobile ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.7rem;
+}
+
+#nav.mobile ul li a {
+    font-size: 1.2rem;
+}
+
+/* -------------------------------------------------
+   HERO SECTION
+------------------------------------------------- */
+
+#hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem 3rem;
+    gap: 3rem;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero-content h3 {
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.hero-content ol {
+    margin: 1rem 0 1.5rem;
+    padding-left: 1.2rem;
+}
+
+.button {
+    background: var(--primary);
+    color: #fff;
+    padding: 0.9rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.hero-media img {
+    width: 420px;
+    border-radius: 15px;
+    box-shadow: 0 15px 25px var(--shadow);
+    transition: 0.3s;
+}
+
+.hero-media img:hover {
+    transform: scale(1.02);
+}
+
+/* -------------------------------------------------
+   ABOUT SECTION
+------------------------------------------------- */
+
+#about {
+    display: flex;
+    padding: 5rem 3rem;
+    gap: 3rem;
+    align-items: center;
+}
+
+#about img {
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px var(--shadow);
+}
+
+/* -------------------------------------------------
+   SERVICES
+------------------------------------------------- */
+
+#services {
+    padding: 4rem 3rem;
+}
+
+.service-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 15px var(--shadow);
+    border-left: 5px solid var(--accent);
+    margin-bottom: 2.5rem;
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+/* -------------------------------------------------
+   CONTACT CTA
+------------------------------------------------- */
+
+section:last-of-type {
+    padding: 4rem 3rem;
+    text-align: center;
+}
+
+section:last-of-type a {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* -------------------------------------------------
+   FOOTER
+------------------------------------------------- */
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    background: var(--card-bg);
+}
+
+/* -------------------------------------------------
+   RESPONSIVE
+------------------------------------------------- */
+
+@media (max-width: 900px) {
+    #hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-media img {
+        width: 300px;
+    }
+
+    #about {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 700px) {
+    nav ul {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    header {
+        padding: 1rem 1.5rem;
+    }
+
+    #hero, #about, #services {
+        padding: 2rem;
+    }
+}

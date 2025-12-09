@@ -199,12 +199,17 @@ nav ul li a:hover {
 
 .button {
     background: var(--primary);
-    color: #fff;
+    margin: 10px;
     padding: 0.9rem 1.5rem;
     border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
     transition: 0.3s;
+}
+
+.button a {
+    color: var(--bg);
+    text-decoration: none;
 }
 
 .button:hover {

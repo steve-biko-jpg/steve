@@ -65,6 +65,7 @@ header {
     font-size: 1.7rem;
     font-weight: 700;
     color: var(--primary);
+    text-shadow: 0 0 5px;
 }
 
 nav ul {
@@ -183,24 +184,23 @@ nav ul li a:hover {
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
-}
-
-.hero-content h3 {
-    margin-top: 1rem;
-    font-weight: 600;
 }
 
 .hero-content ol {
     margin: 1rem 0 1.5rem;
     padding-left: 1.2rem;
+    list-style-position: inside;
+    line-height: 2.5rem;
 }
 
 .button {
     background: var(--primary);
     margin: 10px;
     padding: 0.9rem 1.5rem;
+    width: 50%;
+    display: inline-block;
     border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
@@ -210,6 +210,7 @@ nav ul li a:hover {
 .button a {
     color: var(--bg);
     text-decoration: none;
+    text-align: center;
 }
 
 .button:hover {
@@ -228,12 +229,14 @@ nav ul li a:hover {
     transform: scale(1.02);
 }
 
+
 /* -------------------------------------------------
    ABOUT SECTION
 ------------------------------------------------- */
 
 #about {
     display: flex;
+    flex-direction: row-reverse;
     padding: 5rem 3rem;
     gap: 3rem;
     align-items: center;
@@ -253,14 +256,23 @@ nav ul li a:hover {
     padding: 4rem 3rem;
 }
 
+.services-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .service-card {
     background: var(--card-bg);
     padding: 2rem;
     border-radius: 14px;
     box-shadow: 0 8px 15px var(--shadow);
     border-left: 5px solid var(--accent);
-    margin-bottom: 2.5rem;
+    margin: 2.5rem 0;
     transition: 0.3s;
+}
+
+.service-card ul {
+    list-style-position: inside;
 }
 
 .service-card:hover {
@@ -298,7 +310,7 @@ footer {
 
 @media (max-width: 900px) {
     #hero {
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: center;
     }
 
@@ -306,10 +318,16 @@ footer {
         width: 300px;
     }
 
-    #about {
+    #about, #services {
         flex-direction: column;
         text-align: center;
     }
+
+    .services-container {
+        flex-direction: column;
+    }
+
+
 }
 
 @media (max-width: 700px) {

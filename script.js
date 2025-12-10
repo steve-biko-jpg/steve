@@ -9,13 +9,13 @@ if (localStorage.getItem("theme") === "dark") {
     body.classList.add("dark");
     toggle.textContent = "☀️";
 } else {
-    toggle.textContent = "🌙";
+    toggle.textContent = "🌑";
 }
 
 toggle.addEventListener("click", () => {
     body.classList.toggle("dark");
     const isDark = body.classList.contains("dark");
-    toggle.textContent = isDark ? "☀️" : "🌙";
+    toggle.textContent = isDark ? "☀️" : "🌑";
 
     localStorage.setItem("theme", isDark ? "dark" : "light");
 });

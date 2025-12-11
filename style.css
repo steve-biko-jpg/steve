@@ -1,9 +1,3 @@
-/* -------------------------------------------------
-   FONT + RESET
-------------------------------------------------- */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +13,7 @@ body {
 }
 
 /* -------------------------------------------------
-   LIGHT / DARK COLOR VARIABLES
+    LIGHT / DARK COLOR VARIABLES
 ------------------------------------------------- */
 
 :root {
@@ -45,7 +39,7 @@ body {
 }
 
 /* -------------------------------------------------
-   HEADER + NAV + THEME TOGGLE
+    HEADER + NAV + THEME TOGGLE
 ------------------------------------------------- */
 
 header {
@@ -102,7 +96,7 @@ nav ul li a:hover {
 }
 
 /* -------------------------------------------------
-   MOBILE MENU TOGGLE (HAMBURGER)
+    MOBILE MENU TOGGLE (HAMBURGER)
 ------------------------------------------------- */
 
 .menu-toggle {
@@ -135,7 +129,7 @@ nav ul li a:hover {
 }
 
 /* -------------------------------------------------
-   MOBILE NAVIGATION PANEL
+    MOBILE NAVIGATION PANEL
 ------------------------------------------------- */
 
 #nav.mobile {
@@ -172,9 +166,8 @@ nav ul li a:hover {
 }
 
 /* -------------------------------------------------
-   HERO SECTION
+    HERO SECTION
 ------------------------------------------------- */
-
 #hero {
     display: flex;
     justify-content: space-between;
@@ -216,6 +209,7 @@ nav ul li a:hover {
     transform: translateY(-2px);
 }
 
+/* Set fixed widths for desktop images */
 .hero-media img {
     width: 420px;
     border-radius: 15px;
@@ -225,7 +219,9 @@ nav ul li a:hover {
 
 .hero-media-mobile-only img {
     display: none;
-    width: 420px;
+    /* Removed fixed width from global styles, will handle in media query */
+    max-width: 100%; 
+    height: auto;
     border-radius: 15px;
     box-shadow: 0 15px 25px var(--shadow);
     transition: 0.3s;
@@ -237,7 +233,7 @@ nav ul li a:hover {
 
 
 /* -------------------------------------------------
-   ABOUT SECTION
+    ABOUT SECTION
 ------------------------------------------------- */
 
 #about {
@@ -248,8 +244,9 @@ nav ul li a:hover {
     align-items: center;
 }
 
+/* Set fixed widths for desktop images */
 .about-media img {
-    width: 350px;
+    width: 420px;
     border-radius: 12px;
     box-shadow: 0 10px 20px var(--shadow);
     transition: 0.3s;
@@ -257,7 +254,9 @@ nav ul li a:hover {
 
 .about-media-mobile-only img {
     display: none;
-    width: 350px;
+    /* Removed fixed width from global styles, will handle in media query */
+    max-width: 100%;
+    height: auto;
     border-radius: 12px;
     box-shadow: 0 10px 20px var(--shadow);
     transition: 0.3s;
@@ -268,7 +267,7 @@ nav ul li a:hover {
 }
 
 /* -------------------------------------------------
-   SERVICES
+    SERVICES
 ------------------------------------------------- */
 
 #services {
@@ -309,7 +308,7 @@ nav ul li a:hover {
 }
 
 /* -------------------------------------------------
-   CONTACT CTA
+    CONTACT CTA
 ------------------------------------------------- */
 
 section:last-of-type {
@@ -323,25 +322,51 @@ section:last-of-type a {
 }
 
 /* -------------------------------------------------
-   FOOTER
+    FOOTER
 ------------------------------------------------- */
 
 footer {
     text-align: center;
-    padding: 2rem;
+    padding: 2rem 3rem; /* Ensure footer padding is also controlled */
     margin-top: 3rem;
     background: var(--card-bg);
 }
 
 /* -------------------------------------------------
-   RESPONSIVE
+    RESPONSIVE
 ------------------------------------------------- */
 
+/* Tablet and Smaller Desktop (900px and below) */
 @media (max-width: 900px) {
+    /* **FIX 1: Reduce Padding on Header and Sections** */
+    header {
+        padding: 1rem 2rem; /* Reduce side padding for slightly smaller screens */
+    }
+
     #hero {
         flex-direction: column;
         text-align: center;
+        padding: 6rem 2rem; /* Adjust horizontal padding */
     }
+
+    #about {
+        flex-direction: column;
+        text-align: center;
+        padding: 5rem 2rem; /* Adjust horizontal padding */
+    }
+
+    #services {
+        padding: 4rem 2rem; /* Adjust horizontal padding */
+    }
+
+    section:last-of-type {
+        padding: 4rem 2rem; /* Adjust horizontal padding for contact */
+    }
+    
+    footer {
+        padding: 2rem 2rem; /* Adjust horizontal padding */
+    }
+
 
     .hero-content ol {
         margin: 1rem 0 1.5rem;
@@ -351,32 +376,27 @@ footer {
         text-align: left;
     }
 
-    .hero-media img {
+    /* Hide desktop-only images */
+    .hero-media img, .about-media img {
         display: none;
-        width: 300px;
-        border-radius: 15px;
-        box-shadow: 0 15px 25px var(--shadow);
-        transition: 0.3s;
     }
 
+    /* **FIX 2: Ensure Mobile Images Scale Correctly** */
     .hero-media-mobile-only img {
         display: inline-block;
-        width: 300px;
-        border-radius: 15px;
-        box-shadow: 0 15px 25px var(--shadow);
-        transition: 0.3s;
+        /* Use max-width to ensure the image never overflows its container */
+        max-width: 100%; 
+        height: auto; /* Maintain aspect ratio */
+        width: auto; /* Remove fixed width */
         margin: 20px;
-    }
-
-    .about-media img {
-        display: none;
-        width: 350px;
-        border-radius: 12px;
-        box-shadow: 0 10px 20px var(--shadow);
     }
 
     .about-media-mobile-only img {
         display: inline-block;
+        /* Use max-width to ensure the image never overflows its container */
+        max-width: 100%;
+        height: auto; /* Maintain aspect ratio */
+        width: auto; /* Remove fixed width */
         margin: 20px;
     }
 
@@ -388,11 +408,11 @@ footer {
     .services-container {
         flex-direction: column;
     }
-
-
 }
 
+/* Small Mobile Screens (700px and below) */
 @media (max-width: 700px) {
+    /* Hide desktop navigation and show hamburger */
     nav ul {
         display: none;
     }
@@ -401,11 +421,26 @@ footer {
         display: flex;
     }
 
+    /* **FIX 3: Use Minimal Padding on Narrowest Screens** */
     header {
-        padding: 1rem 1.5rem;
+        padding: 1rem 1rem; /* Very small side padding for narrow screens */
     }
 
     #hero, #about, #services {
-        padding: 2rem;
+        padding: 3rem 1rem; /* Generous vertical padding, minimal side padding */
+    }
+
+    section:last-of-type {
+        padding: 4rem 1rem; /* Minimal side padding for contact */
+    }
+
+    footer {
+        padding: 2rem 1rem; /* Minimal side padding for footer */
+    }
+
+    /* Keep the mobile-only images scaling to 100% of the container width */
+    .hero-media-mobile-only img,
+    .about-media-mobile-only img {
+        margin: 10px 0; /* Tighten up margins around images */
     }
 }
